@@ -39,14 +39,16 @@ meiosis <- function(hap1,hap2){ #perform cross over
 
 library(kinship2)
 
-x=rbind(c(1,1,0,0,1,0), #input pedigree
-c(1,2,0,0,2,0),
-c(1,3,1,2,1,0),
-c(1,4,1,2,2,0),
-c(1,5,1,2,1,0),
-c(1,6,1,2,2,0),
-c(1,7,0,0,1,0),
-c(1,8,7,6,1,0))
+#Read pedigree
+x <- read.table("E:/Documents/APLevine/Salix/pedigree_30_member.pro")
+# # x=rbind(c(1,1,0,0,1,0), #input pedigree
+# # c(1,2,0,0,2,0),
+# # c(1,3,1,2,1,0),
+# # c(1,4,1,2,2,0),
+# # c(1,5,1,2,1,0),
+# # c(1,6,1,2,2,0),
+# # c(1,7,0,0,1,0),
+# # c(1,8,7,6,1,0))
 ped=pedigree(id=x[,2],dadid=x[,3],momid=x[,4],sex=x[,5],affected=x[,6],missid="0")
 generation <- plot(ped)$y
 
