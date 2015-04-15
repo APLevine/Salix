@@ -88,9 +88,10 @@ for (i in nf.o){
 	}
 }
 
-sim$MARKER <- row.names(sim)
-
-write.table(sim,file="sim1_hap.txt",quote=F,row.names=F,col.names=T)
+#Save flow information
+flow.out <- row.names(sim)
+flow.out <- cbind(flow.out, sim)
+write.table(flow.out,file="sim1.hap",quote=F,row.names=F,col.names=T)
 
 #For simulated genotypes
 genotypes <- sim
