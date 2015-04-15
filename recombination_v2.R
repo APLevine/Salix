@@ -40,7 +40,7 @@ meiosis <- function(hap1,hap2){ #perform cross over
 library(kinship2)
 
 #Read pedigree
-x <- read.table("E:/Documents/APLevine/Salix/pedigree_30_member.pro")
+x <- read.table("pedigree_30_member.pro")
 # # x=rbind(c(1,1,0,0,1,0), #input pedigree
 # # c(1,2,0,0,2,0),
 # # c(1,3,1,2,1,0),
