@@ -90,7 +90,7 @@ for (i in nf.o){
 
 sim$MARKER <- row.names(sim)
 
-write.table(sim,file="sim1.hap",quote=F,row.names=F,col.names=T)
+write.table(sim,file="sim1_hap.txt",quote=F,row.names=F,col.names=T)
 
 #For simulated genotypes
 genotypes <- sim
