@@ -88,6 +88,8 @@ for (i in nf.o){
 	}
 }
 
+write.table(sim,file="sim1.hap",quote=F,row.names=T,col.names=T)
+
 #For simulated genotypes
 genotypes <- sim
 for (i in 1:n){
