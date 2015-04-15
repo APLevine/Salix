@@ -98,5 +98,13 @@ for (i in 1:n){
 	}
 }
 
+#Generate tped
+left <- cbind(rep(1,n),row.names(out),1:n,rep(0,n))
+tped <- cbind(left,genotypes)
 
+#Save tped
+write.table(tped,file="sim1.tped",quote=F,row.names=F,col.names=F,sep="\t")
+
+#Save tfam
+write.table(x,file="sim1.tfam",quote=F,row.names=F,col.names=F,sep="\t")
 
