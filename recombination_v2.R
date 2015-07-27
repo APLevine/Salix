@@ -18,23 +18,25 @@ p <- (1-exp(-2*d/100))/2
 #Number of markers
 n <- chr.len/d
 
-meiosis <- function(hap1,hap2){ #perform cross over
-	y <- cbind(hap1,hap2) #input haplotypes
-	z <- y #for output
-	x <- rbinom(n,1,p) #binary indicator of cross-over at each marker
-	co <- which(x==1) #positions of cross-overs
-	count = 0
-	for (i in co){
-		count = count + 1
-		if (count %%2 == 1){
-			z[i:n,] = y[i:n,c(2,1)]
-		}
-		if (count %%2 == 0){
-			z[i:n,] = y[i:n,]
-		}
-	}
-	keep <- rbinom(1,1,0.5)+1 #indepdent assortment
-	return(z[,keep])
+#perform cross over
+meiosis <- function(hap1,hap2){
+    #input haplotypes
+    y <- cbind(hap1,hap2)
+    z <- y #for output
+    x <- rbinom(n,1,p) #binary indicator of cross-over at each marker
+    co <- which(x==1) #positions of cross-overs
+    count = 0
+    for (i in co){
+    count = count + 1
+    if (count %%2 == 1){
+    z[i:n,] = y[i:n,c(2,1)]
+    }
+    if (count %%2 == 0){
+    z[i:n,] = y[i:n,]
+    }
+    }
+    keep <- rbinom(1,1,0.5)+1 #indepdent assortment
+    return(z[,keep])
 }
 
 library(kinship2)
@@ -63,10 +65,10 @@ names(out)[1:length(x[,1])*2] <- paste(x[,2],2,sep="_")
 #Identify founders and populate haplotypes with identifier _1 and _2
 founders <- which(x[,3]==0)
 for (i in founders){
-	pos.1 <- i*2-1
-	pos.2 <- i*2
-	out[,pos.1] <- paste(x[i,2],"1",sep=".")
-	out[,pos.2] <- paste(x[i,2],"2",sep=".")
+        pos.1 <- i*2-1
+        pos.2 <- i*2
+        out[,pos.1] <- paste(x[i,2],"1",sep=".")
+        out[,pos.2] <- paste(x[i,2],"2",sep=".")
 }
 
 #For simulated non-founder haplotypes
@@ -76,16 +78,16 @@ nf.generation <- generation[nf] #non-founders, generation
 nf.o <- nf[order(nf.generation)] #non-founders ordered
 
 for (i in nf.o){
-	i.hap.pos <- c(i*2-1,i*2) #output column numbers
-	for (parent in c(3,4)){ #father then mother
-		count = parent-2 #1 then 2
-		i.parent <- x[i,parent] #parent identifier
-		i.parent.pos <- which(x[,2]==i.parent) #parent position
-		i.parent.hap.1 <- sim[,i.parent.pos*2-1] #parent haplotype 1
-		i.parent.hap.2 <- sim[,i.parent.pos*2] #parent haplotype 2
-		parent.out <- meiosis(i.parent.hap.1,i.parent.hap.2) #meiosis result
-		sim[,i.hap.pos[count]] <- parent.out #store
-	}
+        i.hap.pos <- c(i*2-1,i*2) #output column numbers
+        for (parent in c(3,4)){ #father then mother
+            count = parent-2 #1 then 2
+            i.parent <- x[i,parent] #parent identifier
+            i.parent.pos <- which(x[,2]==i.parent) #parent position
+            i.parent.hap.1 <- sim[,i.parent.pos*2-1] #parent haplotype 1
+            i.parent.hap.2 <- sim[,i.parent.pos*2] #parent haplotype 2
+            parent.out <- meiosis(i.parent.hap.1,i.parent.hap.2) #meiosis result
+            sim[,i.hap.pos[count]] <- parent.out #store
+        }
 }
 
 #Save flow information
@@ -96,11 +98,11 @@ write.table(flow.out,file="sim1.hap",quote=F,row.names=F,col.names=T)
 #For simulated genotypes
 genotypes <- sim
 for (i in 1:n){
-	u.haps <- unique(as.character(sim[i,])) #unique haplotypes
-	for (j in u.haps){ #assign genotype
-		this <- rbinom(1,1,0.5) #af=0.5
-		genotypes[i,which(genotypes[i,]==j)] <- this
-	}
+        u.haps <- unique(as.character(sim[i,])) #unique haplotypes
+        for (j in u.haps){ #assign genotype
+            this <- rbinom(1,1,0.5) #af=0.5
+            genotypes[i,which(genotypes[i,]==j)] <- this
+        }
 }
 
 #Generate tped
