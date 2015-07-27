@@ -14,6 +14,8 @@ chr.len <- chr[1]
 d <- 1
 #Probability of recombination between markers
 p <- (1-exp(-2*d/100))/2
+# since markers are spaced at 1cM intervals this is simply = .01
+p <- .01
 
 #Number of markers
 n <- chr.len/d
