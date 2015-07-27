@@ -32,7 +32,7 @@ Brief description of the files:
 | 21 | 62.786478 |  0.62786478 |
 | 22 | 74.109562 |  0.74109562 |
 
-If markers are spaced at 0.1 CentiMorgans (cM) this signifies that there's a $0.1/100=.001$ probability of adjacent markers recombining. Note that the probabilities are considered independent.
+If markers are spaced at 0.1 CentiMorgans (cM) this signifies that there's a ```0.1/100=.001``` probability of adjacent markers recombining. Note that the probabilities are considered independent.
 
 
 
