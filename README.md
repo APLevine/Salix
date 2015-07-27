@@ -3,9 +3,8 @@
 Gene-dropping of sequence variants within pedigrees
 
 Brief description of the files:
-* *cm_length.txt* contains the length of each chromosome in centiMorgans.  A genetic distance of 1 Morgan represents the expected number of crossovers between two markers.
+* *cm_length.txt* contains the length of each chromosome in centiMorgans.  A Morgan is a measure of genetic distance which represents the expected number of crossovers between two markers.
 * *run.sh* is an example Bash script for the entire process.
-
 
 
 | Chr | Centimorgans | Morgans |
@@ -32,6 +31,8 @@ Brief description of the files:
 | 20 | 108.266934 | 1.08266934 |
 | 21 | 62.786478 |  0.62786478 |
 | 22 | 74.109562 |  0.74109562 |
+
+If markers are spaced at 0.1 CentiMorgans (cM) this signifies that there's a $0.1/100=.001$ probability of adjacent markers recombining. Note that the probabilities are considered independent.
 
 
 
