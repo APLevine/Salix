@@ -37,7 +37,7 @@ meiosis <- function(hap1,hap2){
     z[i:n,] = y[i:n,]
     }
     }
-    keep <- rbinom(1,1,0.5)+1 #indepdent assortment
+    keep <- rbinom(1,1,0.5)+1 #independent assortment
     return(z[,keep])
 }
 
